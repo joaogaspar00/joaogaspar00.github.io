@@ -22,9 +22,9 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "site_logo.png"
+  avatar           : "bio-photo-2.jpg"
   name             : "MSc Aerospace Engineering"
-  pronouns         : # example: "she/her"  
+  pronouns         : "He/Him"  
   bio              : "Short biography for the left-hand sidebar"
   location         : "Lisbon, Portugal"
   employer         : "Instituto Superior Técnico"
