@@ -11,13 +11,6 @@ redirect_from:
 
 Welcome to my curriculum page. Here, you can find detailed information about my academic background, professional experience, and key projects. Feel free to download my CV for a PDF version.
 
-
-<style>
-  button:hover {
-    background-color: grey;
-  }
-</style>
-
 <div style="display: flex; justify-content: center; align-items: center;">
   <a href="https://www.exemplo.com" target="_blank">
     <button style="
