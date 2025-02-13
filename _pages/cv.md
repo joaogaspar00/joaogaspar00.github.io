@@ -12,7 +12,7 @@ redirect_from:
 Welcome to my curriculum page. Here, you can find detailed information about my academic background, professional experience, and key projects. Feel free to download my CV for a PDF version.
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <a href="https://www.exemplo.com" target="_blank">
+  <a href="https://joaogaspar00.github.io/files/CV.pdf" target="_blank">
     <button style="
       padding: 10px 20px;
       font-size: 14px;
