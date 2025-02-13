@@ -9,6 +9,9 @@ redirect_from:
 
 {% include base_path %}
 
+Welcome to my curriculum page. Here, you can find detailed information about my academic background, professional experience, and key projects. Feel free to download my CV for a comprehensive overview of my skills and achievements.
+
+
 <style>
   button:hover {
     background-color: grey;
@@ -26,11 +29,10 @@ redirect_from:
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s;">
-      Passa o rato aqui
+      Download CV
     </button>
   </a>
 </div>
-
 
 
 
