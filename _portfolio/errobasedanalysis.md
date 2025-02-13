@@ -1,5 +1,5 @@
 ---
-title: "Error Based Analysis"
+title: "Stability, Error Analysis, and Mesh Influence in CFD Simulations"
 excerpt: "This project investigates numerical stability, spatial and temporal discretization errors, and mesh quality in CFD applications. The first part analyzes the 1D convection equation using five different discretization schemes, supported by Von Neumann stability analysis and error evaluation. The second part examines the impact of mesh topology and cell types on the accuracy of a 2D heat transfer problem, using STAR-CCM+ to compare results against an analytical solution. <br/><img src='/images/portfolio/error_project.png' style='display: block; margin-top: 20px; margin-left: auto; margin-right: auto; width: 70%; height: auto;'>"
 collection: portfolio
 category:
