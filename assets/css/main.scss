@@ -40,3 +40,16 @@
     "vendor/font-awesome/brands",
     "vendor/magnific-popup/magnific-popup"
 ;
+
+
+.portfoilo-responsive-img {
+  width: 50%; /* Default width for larger screens */
+  height: auto;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-responsive-img {
+    width: 90%; /* Adjust to 90% for mobile screens */
+  }
+}
