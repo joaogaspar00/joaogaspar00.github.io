@@ -8,3 +8,19 @@ category:
 
 
 > 🚧 Under construction
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <a href="https://joaogaspar00.github.io/files/projects/AmbEsp.pdf" target="_blank">
+    <button style="
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;">
+      Download PDF
+    </button>
+  </a>
+</div>

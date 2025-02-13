@@ -12,7 +12,7 @@ category:
 
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <a href="https://joaogaspar00.github.io/files/projects/HW1-AERO3.pdf" target="_blank">
+  <a href="https://joaogaspar00.github.io/files/projects/HW1_AERO3.pdf" target="_blank">
     <button style="
       padding: 10px 20px;
       font-size: 14px;
