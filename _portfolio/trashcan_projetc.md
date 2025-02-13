@@ -3,11 +3,12 @@ title: "Smart Trash Can with Odor Neutralization"
 excerpt: "This project presents the development of a Smart Trash Can with Odor Neutralization, designed at Instituto Superior Técnico as part of the Product Development and Mechanical Design course. The work encompasses need identification, requirement formulation, and product architecture. It includes mathematical modeling for performance validation, Design for X (DfX) considerations, prototyping, and economic analysis to ensure feasibility and sustainability. <br/><img src='/images/portfolio/filter system.png' style='display: block; margin-top: 20px; margin-left: auto; margin-right: auto; width: 70%; height: auto;'>"
 collection: portfolio
 category:
-    - CFD
-    - Numeric Methods
-    - Compressible Flow
-    - Shock Waves
-    - Nozzle Flow
+    - Product Design
+    - Mechanical Engineering
+    - Smart Devices
+    - Odor Control
+    - Prototyping
+    - Sustainability
 ---
 
 <div style="display: flex; justify-content: center; align-items: center;">
