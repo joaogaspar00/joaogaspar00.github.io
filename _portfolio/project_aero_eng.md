@@ -1,5 +1,5 @@
 ---
-title: "Smart Trash Can with Odor Neutralization"
+title: "Pararotor Recovery System Design"
 excerpt: "This report provides a comprehensive analysis of spacecraft recovery systems, emphasising the aerodynamics of the rotor during autorotation. Subjects covered include parachute use in space missions, controlled thrust vector systems, and crucial part recovery for heavy-lift launchers. The study assesses the benefits and drawbacks of recovery methods and suggests a unique rotating wing design for secure landings. It emphasises Mars exploration, evaluates a spinning entry vehicle experimentally, and supports reusable parts. Numerical simulations, Prandtl tip loss functions, and blade element momentum theory are used to investigate aerodynamic characteristics. <br/><img src='/images/portfolio/karman_rotochute.png' style='display: block; margin-top: 20px; margin-left: auto; margin-right: auto; width: 70%; height: auto;'>"
 collection: portfolio
 category:
