@@ -9,8 +9,14 @@ redirect_from:
 
 {% include base_path %}
 
-<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-  <a href="http://joaogaspar00.github.io/files/CV.pdf" target="_blank">
+<style>
+  button:hover {
+    background-color: grey;
+  }
+</style>
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <a href="https://www.exemplo.com" target="_blank">
     <button style="
       padding: 15px 30px;
       font-size: 18px;
@@ -25,11 +31,7 @@ redirect_from:
   </a>
 </div>
 
-<style>
-  button:hover {
-    background-color: grey;
-  }
-</style>
+
 
 
 
