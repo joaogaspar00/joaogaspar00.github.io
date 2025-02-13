@@ -24,29 +24,35 @@ and Nanoelectronics, Computer Networks, Fundamentals of Automatic Control, Elect
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+**Scholarship** Nov 2021 – Jan 2025
+_ROB9-16 & Project ”Oeiras Educa”_
+- Led STEM workshops and activities for thousands of children under the ROB9-16 project at Instituto Superior Técnico.
+- Collaborated with Câmara Municipal de Oeiras to develop educational programmes, lectures, and student projects.
+- **Developed Skills**: work with children, public speeking, teaching, communication
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+**Técnico Fuel Cell** Jul 2022 – Apr 2024
+_Electrical Engineer_
+- Development of a telemetry system for a hydrogen powered car for Shell Eco-Marathon competition
+- **Developed Skills**: electronics, PCB design, circuits and systems design, laboratory work
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
+Voluteering
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+
+**Mentor** Sep 2020 – Jul 2022
+_NAPE - IST_
+- Welcome and integrate new students to the school
+
+**Projet ”Salas de Estudo Online”** Sep 2021 – Jan 2022
+_Núcleo de Desenvolvimento Académico - IST_
+- Providing personalized classes for the first years students helping with projects and examinations
+  
+Hard Skills
+======
+Programming Languages: Matlab, Python, C
+Software: Simulink, LabView, Solidworks, STARCCM+
+
+<!---
+
 
 Publications
 ======
@@ -69,3 +75,5 @@ Teaching
 Service and leadership
 ======
 * Currently signed in to 43 different slack teams
+
+--->
