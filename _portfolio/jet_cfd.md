@@ -8,6 +8,7 @@ category:
     - Compressible Flow
     - Shock Waves
     - Nozzle Flow
+---
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <a href="https://joaogaspar00.github.io/files/projects/HW4___Computacional_Fluid_Mechanics.pdf" target="_blank">
