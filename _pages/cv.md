@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -8,6 +8,14 @@ redirect_from:
 ---
 
 {% include base_path %}
+
+
+<a href="http://joaogaspar00.github.io/files/paper1.pdf" target="_blank">
+  <button style="padding:10px 20px; font-size:16px; background-color:#007bff; color:white; border:none; border-radius:5px; cursor:pointer;">
+    Download
+  </button>
+</a>
+
 
 Education
 ======
@@ -48,9 +56,9 @@ _Núcleo de Desenvolvimento Académico - IST_
   
 Hard Skills
 ======
-**Programming Languages**: Matlab, Python, C**
+**Programming Languages**: Matlab, Python, C
 
-**Software: Simulink, LabView, Solidworks, STARCCM+**
+**Software**: Simulink, LabView, Solidworks, STARCCM+
 
 <!---
 
