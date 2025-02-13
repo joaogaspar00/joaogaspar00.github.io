@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Welcome to my curriculum page. Here, you can find detailed information about my academic background, professional experience, and key projects. Feel free to download my CV for a comprehensive overview of my skills and achievements.
+Welcome to my curriculum page. Here, you can find detailed information about my academic background, professional experience, and key projects. Feel free to download my CV for a PDF version.
 
 
 <style>
