@@ -21,8 +21,8 @@ Welcome to my curriculum page. Here, you can find detailed information about my 
 <div style="display: flex; justify-content: center; align-items: center;">
   <a href="https://www.exemplo.com" target="_blank">
     <button style="
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 10px 20px;
+      font-size: 14px;
       background-color: black;
       color: white;
       border: none;
