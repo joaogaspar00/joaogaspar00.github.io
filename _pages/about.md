@@ -9,6 +9,5 @@ redirect_from:
 
 Hi! My name is João Gaspar, and I'm a MSc in Aerospace engineering at Instituto Superior Técnico (IST)
 
-> [!NOTE]
+> **📍 Note**  
 > Useful information that users should know, even when skimming content.
-
