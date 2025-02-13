@@ -9,11 +9,6 @@ category:
     - Nozzle
 ---
 
-
-> 🚧 Under construction
-
-
-
 <div style="display: flex; justify-content: center; align-items: center;">
   <a href="https://joaogaspar00.github.io/files/projects/HW2_AERO3.pdf" target="_blank">
     <button style="
