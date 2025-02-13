@@ -14,8 +14,8 @@ _Olá 👋🏼 Eu sou o João Gaspar, um estudante de Mestrado em Engenharia Aer
 
 <div style="width: 75%; background-color: #ADD8E6; color: black; border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 30px auto;">
     <h1 style="color: #002590; font-weight: bold; margin-top: 0; text-align: center;">👨🏻‍💻 #OpenToWork</h1>
-    <p style="margin: 20px 0;"> 🇵🇹 Atualmente, estou à procura de oportunidades nas áreas de engenharia aeroespacial, seja como engenheiro, estudante de PhD ou assistente de pesquisa. Tenho interesse em áreas como aerodinâmica, CFD, helicópteros e asas rotativas, e desenvolvimento, otimização e construção de aeronaves.</p>
     <p style="margin: 20px 0;">🇬🇧 I am currently looking for opportunities in aerospace engineering, either as an engineer, PhD student, or research assistant. I am interested in areas such as aerodynamics, CFD, helicopters, rotary wings, and the development, optimization, and construction of aircraft.</p>
+    <p style="margin: 20px 0;"> 🇵🇹 Atualmente, estou à procura de oportunidades nas áreas de engenharia aeroespacial, seja como engenheiro, estudante de PhD ou assistente de pesquisa. Tenho interesse em áreas como aerodinâmica, CFD, helicópteros e asas rotativas, e desenvolvimento, otimização e construção de aeronaves.</p>
     <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
       <a href="https://joaogaspar00.github.io/cv/" target="_blank">
         <button style="
@@ -39,7 +39,7 @@ _Olá 👋🏼 Eu sou o João Gaspar, um estudante de Mestrado em Engenharia Aer
 I invite you to explore these projects and ask questions, and engage in discussions to further deepen our understanding of these exciting topics.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <a href="https://joaogaspar00.github.io/PORTFOLIO/" target="_blank">
+  <a href="https://joaogaspar00.github.io/portfolio/" target="_blank">
     <button style="
       padding: 10px 20px;
       font-size: 14px;
