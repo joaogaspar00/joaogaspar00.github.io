@@ -1,5 +1,5 @@
 ---
-title: "Study of Coflow Airfoils in Star CCM+"
+title: "Compressible Viscous and Inviscid High Speed Flows"
 excerpt: "This project explores two key CFD applications: the simulation of a convergent-divergent nozzle and a shock tube. The first part models the flow through an axisymmetric nozzle, analyzing both inviscid and viscous effects to assess their impact on performance. The second part simulates a shock tube to study shock wave propagation and compressible flow behavior, comparing numerical results with theoretical predictions. <br/><img src='/images/portfolio/jet_shocks.png' style='display: block; margin-top: 20px; margin-left: auto; margin-right: auto; width: 70%; height: auto;'>"
 collection: portfolio
 category:
