@@ -36,7 +36,7 @@ Education
 _Instituto Superior Técnico_
 - Aerodynamics and Propulsion specialization
 - **Key subjects**: Incompressible and Compressible Aerodynamics, Helicopters, Computational Fluid Dynamics, Aircraft Optimization, Electric Propulsion for Aircraft, Project Management
-- **Thesis Subject**: Pararotor Recovery System Design
+- **Thesis Subject**: Computational Investigation of Spacecraft Recovery via Rotary Wings: A Study on Autorotation
 
 **Bachelor’s degree in Electronics Engineering** (Sep 2019 – Jun 2022)
 _Instituto Superior Técnico_
