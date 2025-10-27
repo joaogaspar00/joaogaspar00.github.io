@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Welcom to my Profile 😎"
+title: "Welcome to my Profile 😎"
 author_profile: true
 redirect_from: 
   - /about/
