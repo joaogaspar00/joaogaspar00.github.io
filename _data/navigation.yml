@@ -11,6 +11,9 @@ main:
     
   - title: "CV"
     url: /cv
+
+  - title: "ASTRAL"
+    url: "https://joaogaspar00.github.io/ASTRAL/"
     
 #  - title: "Blog Posts"
 #    url: /year-archive/
