@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f7fb" />
+
+  <!-- Title is set dynamically by JS from frontmatter -->
+  <title>Project — João Gaspar</title>
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+
+  <!-- Google Fonts (same as main site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!--
+    marked.js — lightweight Markdown → HTML parser.
+    Loaded from jsDelivr CDN, pinned to a stable minor version.
+    No build step required; works directly in the browser.
+    https://marked.js.org
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
+</head>
+<body>
+
+  <!-- =====================================================
+       NAVIGATION (identical to index.html)
+  ===================================================== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Back to home">JG</a>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#toolbox">Toolbox</a></li>
+        <li><a href="index.html#cv">CV</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-controls="nav-links"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- =====================================================
+       PROJECT PAGE CONTENT
+       Populated dynamically by the script below.
+       The URL parameter ?p=<slug> determines which
+       Markdown file is loaded from projects/<slug>.md
+  ===================================================== -->
+  <main class="project-page">
+    <div class="project-page-inner" id="project-root">
+
+      <!-- Initial loading state; replaced by JS -->
+      <p class="project-loading" id="project-loading" aria-live="polite">
+        Loading project&hellip;
+      </p>
+
+    </div>
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER (simplified version)
+  ===================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner" style="padding-top: 3rem; padding-bottom: 3rem;">
+      <div class="footer-divider"></div>
+      <p class="footer-copy">&copy; 2025 João Gaspar</p>
+    </div>
+  </footer>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       1. Parse ?p= URL parameter
+       2. Fetch projects/<slug>.md
+       3. Parse YAML-style frontmatter
+       4. Render Markdown with marked.js
+       5. Inject title, hero image, content, download button
+  ===================================================== -->
+  <script>
+    /* -------------------------------------------------
+       Mobile Navigation Toggle (same as index.html)
+    ------------------------------------------------- */
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks  = document.getElementById('nav-links');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('click', e => {
+      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+
+    /* -------------------------------------------------
+       Frontmatter Parser
+       Parses simple YAML-style frontmatter blocks
+       delimited by --- at the top of a Markdown file.
+
+       Returns: { data: { key: value, … }, content: '…' }
+    ------------------------------------------------- */
+    function parseFrontmatter(raw) {
+      const lines = raw.replace(/\r\n/g, '\n').trimStart().split('\n');
+
+      // Must begin with ---
+      if (lines[0].trim() !== '---') {
+        return { data: {}, content: raw };
+      }
+
+      // Find the closing ---
+      let closingLine = -1;
+      for (let i = 1; i < lines.length; i++) {
+        if (lines[i].trim() === '---') {
+          closingLine = i;
+          break;
+        }
+      }
+
+      // No closing delimiter found — treat the whole file as content
+      if (closingLine === -1) {
+        return { data: {}, content: raw };
+      }
+
+      // Parse key: value pairs from the frontmatter block
+      const data = {};
+      for (let i = 1; i < closingLine; i++) {
+        const colonIdx = lines[i].indexOf(':');
+        if (colonIdx > 0) {
+          const key   = lines[i].slice(0, colonIdx).trim();
+          const value = lines[i].slice(colonIdx + 1).trim()
+                                .replace(/^['"]|['"]$/g, '');  // strip surrounding quotes
+          if (key) data[key] = value;
+        }
+      }
+
+      const content = lines.slice(closingLine + 1).join('\n').trimStart();
+      return { data, content };
+    }
+
+
+    /* -------------------------------------------------
+       Render Project Page
+       Called once the Markdown file has been fetched.
+    ------------------------------------------------- */
+    function renderProject(raw, slug) {
+      const { data, content } = parseFrontmatter(raw);
+      const root = document.getElementById('project-root');
+
+      // Configure marked.js: sanitise output, smart typography
+      marked.setOptions({
+        gfm: true,         // GitHub-Flavored Markdown
+        breaks: false,
+      });
+
+      // Build the page HTML
+      const titleText = data.title || slug.replace(/-/g, ' ');
+
+      const imageHtml = data.image
+        ? `<img
+             src="${escapeAttr(data.image)}"
+             alt="${escapeAttr(titleText)}"
+             class="project-hero-img"
+             loading="eager"
+           />`
+        : '';
+
+      const tagsHtml = data.tags
+        ? `<div class="project-tags">
+             ${data.tags.split(',').map(t =>
+               `<span class="tag">${escapeHtml(t.trim())}</span>`
+             ).join('')}
+           </div>`
+        : '';
+
+      const downloadHtml = data.report
+        ? `<div class="project-download">
+             <a href="${escapeAttr(data.report)}" class="btn btn-outline" download>
+               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                 <polyline points="7 10 12 15 17 10"/>
+                 <line x1="12" y1="15" x2="12" y2="3"/>
+               </svg>
+               Download Report
+             </a>
+           </div>`
+        : '';
+
+      root.innerHTML = `
+        <a href="index.html#projects" class="project-back">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          All Projects
+        </a>
+
+        ${imageHtml}
+
+        <h1 class="project-title">${escapeHtml(titleText)}</h1>
+
+        ${tagsHtml}
+
+        <div class="project-content">
+          ${marked.parse(content)}
+        </div>
+
+        ${downloadHtml}
+      `;
+
+      // Update the browser tab title
+      document.title = `${titleText} — João Gaspar`;
+    }
+
+
+    /* -------------------------------------------------
+       Show Error State
+    ------------------------------------------------- */
+    function renderError(slug) {
+      const root = document.getElementById('project-root');
+      root.innerHTML = `
+        <a href="index.html#projects" class="project-back">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          All Projects
+        </a>
+        <div class="project-error">
+          <h2>Project not found</h2>
+          <p>Could not load <code>projects/${escapeHtml(slug)}.md</code>.</p>
+          <p style="margin-top:1rem;">
+            <a href="index.html#projects" class="btn btn-ghost">← Back to Projects</a>
+          </p>
+        </div>
+      `;
+      document.title = 'Project not found — João Gaspar';
+    }
+
+
+    /* -------------------------------------------------
+       Utility: escape strings for use in HTML attributes
+       and text content to prevent XSS.
+    ------------------------------------------------- */
+    function escapeAttr(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+
+    /* -------------------------------------------------
+       Main Entry Point
+       Read ?p= from URL, fetch the corresponding
+       Markdown file, and render the project page.
+    ------------------------------------------------- */
+    (function init() {
+      const params = new URLSearchParams(window.location.search);
+      const slug   = params.get('p');
+
+      // No slug provided — redirect home
+      if (!slug || !/^[\w-]+$/.test(slug)) {
+        window.location.replace('index.html#projects');
+        return;
+      }
+
+      // Path is relative to project.html (both in repo root)
+      const markdownPath = `projects/${slug}.md`;
+
+      fetch(markdownPath)
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return response.text();
+        })
+        .then(raw => renderProject(raw, slug))
+        .catch(() => renderError(slug));
+    })();
+  </script>
+
+</body>
+</html>
