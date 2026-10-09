@@ -1,0 +1,42 @@
+<svg width="236" height="375" viewBox="222 50 236 375" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Ilustração técnica de um foguetão com chama animada no propulsor</title>
+<desc>Foguetão metálico roxo-acinzentado com linhas de painel, bocal do motor e chama animada encostada à base, sobre fundo transparente.</desc>
+<style>
+@keyframes flick1 { 0%{transform:scaleY(1) scaleX(1);opacity:1;} 50%{transform:scaleY(1.1) scaleX(0.95);opacity:0.92;} 100%{transform:scaleY(1) scaleX(1);opacity:1;} }
+@keyframes flick2 { 0%{transform:scaleY(1) scaleX(1);} 50%{transform:scaleY(0.92) scaleX(1.06);} 100%{transform:scaleY(1) scaleX(1);} }
+@keyframes flick3 { 0%{transform:scaleY(1);opacity:0.95;} 50%{transform:scaleY(1.15);opacity:1;} 100%{transform:scaleY(1);opacity:0.95;} }
+.f1{transform-origin:340px 340px;animation:flick1 0.55s ease-in-out infinite;}
+.f2{transform-origin:340px 338px;animation:flick2 0.42s ease-in-out infinite;}
+.f3{transform-origin:340px 336px;animation:flick3 0.34s ease-in-out infinite;}
+</style>
+
+<g class="f1">
+<path d="M304 340 C304 368 316 394 340 412 C364 394 376 368 376 340 Z" fill="#993c1d"/>
+</g>
+<g class="f2">
+<path d="M314 338 C314 360 323 382 340 398 C357 382 366 360 366 338 Z" fill="#d85a30"/>
+</g>
+<g class="f3">
+<path d="M324 336 C324 353 330 370 340 382 C350 370 356 353 356 336 Z" fill="#f0997b"/>
+</g>
+
+<path d="M340 60 C378 100 392 160 392 230 L392 340 L288 340 L288 230 C288 160 302 100 340 60 Z" fill="#b4b2a9"/>
+
+<path d="M340 68 C368 104 376 158 378 214 L302 214 C304 158 312 104 340 68 Z" fill="#3c3489"/>
+
+<line x1="288" y1="250" x2="392" y2="250" stroke="#5f5e5a" stroke-width="1.5"/>
+<line x1="288" y1="300" x2="392" y2="300" stroke="#5f5e5a" stroke-width="1.5"/>
+<line x1="340" y1="60" x2="340" y2="340" stroke="#888780" stroke-width="1" opacity="0.5"/>
+
+<rect x="300" y="300" width="80" height="18" rx="2" fill="#5f5e5a"/>
+<rect x="304" y="304" width="72" height="10" rx="1" fill="#444441"/>
+
+<path d="M288 250 L232 320 L288 320 Z" fill="#26215c"/>
+<path d="M392 250 L448 320 L392 320 Z" fill="#26215c"/>
+<line x1="288" y1="270" x2="250" y2="310" stroke="#7c6cf0" stroke-width="1" opacity="0.6"/>
+<line x1="392" y1="270" x2="430" y2="310" stroke="#7c6cf0" stroke-width="1" opacity="0.6"/>
+
+<rect x="300" y="330" width="80" height="14" rx="2" fill="#888780"/>
+<rect x="308" y="333" width="64" height="3" fill="#5f5e5a"/>
+<rect x="308" y="338" width="64" height="3" fill="#5f5e5a"/>
+</svg>

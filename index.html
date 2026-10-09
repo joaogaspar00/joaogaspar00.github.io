@@ -1,871 +1,376 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="João Gaspar — Aerospace Engineer specialising in aerodynamics, flight mechanics, and computational simulation." />
-  <meta name="theme-color" content="#f5f7fb" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João Gaspar — Aerospace Engineer</title>
+<meta name="description" content="João Gaspar — Engenheiro Aeroespacial. Aerodinâmica, propulsão e tecnologia reutilizável.">
+<link rel="icon" type="image/svg+xml" href="logo-jg.svg">
+<link rel="canonical" href="https://joaopsgaspar.pt/">
 
-  <title>João Gaspar — Aerospace Engineer</title>
+<!-- pré-visualização ao partilhar o link (LinkedIn, WhatsApp, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joaopsgaspar.pt/">
+<meta property="og:title" content="João Gaspar — Aerospace Engineer">
+<meta property="og:description" content="Engenheiro Aeroespacial — aerodinâmica, CFD, propulsão e tecnologia reutilizável.">
+<meta property="og:image" content="https://joaopsgaspar.pt/eu.jpeg">
+<meta name="twitter:card" content="summary">
 
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+<link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 
-  <!-- Google Fonts: Inter (body) + JetBrains Mono (accents/tags) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- =====================================================
-       NAVIGATION
-       Sticky nav with backdrop blur.
-       JS at bottom handles mobile toggle + active links.
-  ===================================================== -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
+<!-- camadas de fundo -->
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="clouds" id="clouds" aria-hidden="true">
+  <div class="cloud" style="bottom:60vh; left:-20%; width:260px; height:70px; animation-duration:38s;"></div>
+  <div class="cloud" style="bottom:78vh; left:-30%; width:340px; height:90px; animation-duration:52s; animation-delay:-14s;"></div>
+  <div class="cloud" style="bottom:50vh; left:-25%; width:200px; height:55px; animation-duration:30s; animation-delay:-8s;"></div>
+  <div class="cloud" style="bottom:85vh; left:-35%; width:300px; height:80px; animation-duration:46s; animation-delay:-26s;"></div>
+  <div class="cloud" style="bottom:35vh; left:-40%; width:220px; height:60px; animation-duration:42s; animation-delay:-20s;"></div>
+  <div class="cloud" style="bottom:15vh; left:-15%; width:280px; height:75px; animation-duration:35s; animation-delay:-5s;"></div>
+  <div class="cloud" style="bottom:92vh; left:-45%; width:180px; height:50px; animation-duration:60s; animation-delay:-30s;"></div>
+  <div class="cloud" style="bottom:68vh; left:-10%; width:250px; height:68px; animation-duration:48s; animation-delay:-36s;"></div>
+  <div class="cloud" style="bottom:5vh; left:-30%; width:320px; height:85px; animation-duration:55s; animation-delay:-12s;"></div>
+</div>
+<div class="stars" id="stars" data-count="600" aria-hidden="true"></div>
+<div class="nebula" id="nebula" aria-hidden="true"></div>
 
-      <!-- Logo / monogram -->
-      <a href="index.html" class="nav-logo" aria-label="João Gaspar home">JG</a>
+<div class="launchpad" id="launchpad" aria-hidden="true">
+  <svg viewBox="0 0 1200 950" preserveAspectRatio="xMidYMax slice">
+    <style>
+      @keyframes flick1 { 0%{transform:scaleY(1) scaleX(1);opacity:1;} 50%{transform:scaleY(1.1) scaleX(0.95);opacity:0.92;} 100%{transform:scaleY(1) scaleX(1);opacity:1;} }
+      @keyframes flick2 { 0%{transform:scaleY(1) scaleX(1);} 50%{transform:scaleY(0.92) scaleX(1.06);} 100%{transform:scaleY(1) scaleX(1);} }
+      @keyframes flick3 { 0%{transform:scaleY(1);opacity:0.95;} 50%{transform:scaleY(1.15);opacity:1;} 100%{transform:scaleY(1);opacity:0.95;} }
+      .f1{transform-origin:340px 340px;animation:flick1 0.55s ease-in-out infinite;}
+      .f2{transform-origin:340px 338px;animation:flick2 0.42s ease-in-out infinite;}
+      .f3{transform-origin:340px 336px;animation:flick3 0.34s ease-in-out infinite;}
+    </style>
 
-      <!-- Desktop links -->
-      <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#toolbox">Toolbox</a></li>
-        <li><a href="#cv">CV</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <g id="ground-wrapper" transform="translate(80,550)">
+      <g id="pad-structure">
+        <!-- horizonte distante: montanhas de montanhas_ceu_azul.svg, à escala
+             (680 -> 1200 de largura) para cobrir o ecrã todo, alinhadas à
+             linha do chão (base local y=300 -> y=340) -->
+        <g transform="translate(0,-189.41) scale(1.7647)">
+          <path d="M-100 300 C -20 200 60 150 160 190 C 260 230 320 130 420 170 C 520 210 580 150 680 190 C 760 220 820 200 880 300 Z" fill="#425a78" opacity="0.65"/>
+          <path d="M-100 300 C -20 230 80 190 180 230 C 280 270 340 200 440 240 C 540 280 600 220 680 250 C 760 275 820 260 880 300 Z" fill="#324863" opacity="0.85"/>
+        </g>
 
-      <!-- Mobile hamburger button -->
-      <button
-        class="nav-toggle"
-        id="nav-toggle"
-        aria-controls="nav-links"
-        aria-expanded="false"
-        aria-label="Toggle navigation menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <!-- faixa preta a fechar o chão por baixo das montanhas (x negativo
+             e largura extra para compensar o deslocamento +80 do ground-wrapper) -->
+        <rect x="-100" y="340" width="1400" height="60" fill="#000000"/>
 
+        <line x1="0" y1="340" x2="1200" y2="340" stroke="#232733" stroke-width="2"/>
+
+        <!-- plataforma de betão -->
+        <rect x="780" y="332" width="300" height="8" fill="#1c202b"/>
+        <rect x="780" y="340" width="300" height="4" fill="#141822"/>
+
+        <!-- vala de chama / defletor -->
+        <path d="M853 340 L862 373 L922 373 L931 340 Z" fill="#05060a"/>
+        <line x1="860" y1="352" x2="924" y2="352" stroke="#1c202b" stroke-width="2"/>
+        <line x1="864" y1="363" x2="920" y2="363" stroke="#1c202b" stroke-width="2"/>
+
+        <!-- equipamento de solo -->
+        <rect x="785" y="320" width="18" height="20" rx="2" fill="#1c202b"/>
+        <rect x="1058" y="316" width="20" height="24" rx="2" fill="#1c202b"/>
+        <circle cx="1068" cy="312" r="9" fill="none" stroke="#333a4a" stroke-width="3"/>
+
+        <!-- torre de serviço (gantry) -->
+        <line x1="1050" y1="340" x2="1050" y2="127" stroke="#262b38" stroke-width="7"/>
+        <line x1="1000" y1="340" x2="1000" y2="150" stroke="#262b38" stroke-width="4"/>
+        <line x1="1000" y1="150" x2="1050" y2="196" stroke="#2e3444" stroke-width="2.5"/>
+        <line x1="1050" y1="150" x2="1000" y2="196" stroke="#2e3444" stroke-width="2.5"/>
+        <line x1="1000" y1="196" x2="1050" y2="242" stroke="#2e3444" stroke-width="2.5"/>
+        <line x1="1050" y1="196" x2="1000" y2="242" stroke="#2e3444" stroke-width="2.5"/>
+        <line x1="1000" y1="242" x2="1050" y2="288" stroke="#2e3444" stroke-width="2.5"/>
+        <line x1="1050" y1="242" x2="1000" y2="288" stroke="#2e3444" stroke-width="2.5"/>
+        <line x1="1000" y1="288" x2="1050" y2="340" stroke="#2e3444" stroke-width="2.5"/>
+        <line x1="1050" y1="288" x2="1000" y2="340" stroke="#2e3444" stroke-width="2.5"/>
+
+        <!-- segunda diagonal: desce do mastro até ao vértice já existente no
+             topo da treliça em X — curta, para não atravessar o padrão cruzado -->
+        <line x1="1050" y1="127" x2="1000" y2="150" stroke="#262b38" stroke-width="4.5"/>
+
+        <!-- braços de serviço (ligam a torre ao corpo do foguetão) -->
+        <rect x="906" y="127" width="144" height="7" rx="1" fill="#333a4a"/>
+        <rect x="1040" y="127" width="10" height="7" fill="#4a5268"/>
+        <rect x="906" y="146.5" width="94" height="7" rx="1" fill="#333a4a"/>
+        <rect x="990" y="146.5" width="10" height="7" fill="#4a5268"/>
+
+        <!-- luzes -->
+        <circle cx="1050" cy="127" r="4.5" fill="#9686ff"/>
+        <circle cx="1050" cy="150" r="3.5" fill="#7c6cf0"/>
+        <circle cx="1000" cy="150" r="6" fill="#9686ff"/>
+        <circle cx="1050" cy="288" r="3.5" fill="#7c6cf0"/>
+      </g>
+    </g>
+
+    <!-- foguetão: sobe da base e depois fica fixo no ecrã; quem se move
+         a partir daí é o "ground-wrapper" acima -->
+    <g id="rocket-group" transform="translate(719.6,585.7) scale(0.7386)">
+      <circle id="ignition-flash" class="ignition-flash" cx="340" cy="340" r="10"/>
+      <g class="f1"><path d="M304 340 C304 368 316 394 340 412 C364 394 376 368 376 340 Z" fill="#993c1d"/></g>
+      <g class="f2"><path d="M314 338 C314 360 323 382 340 398 C357 382 366 360 366 338 Z" fill="#d85a30"/></g>
+      <g class="f3"><path d="M324 336 C324 353 330 370 340 382 C350 370 356 353 356 336 Z" fill="#f0997b"/></g>
+      <path d="M340 60 C378 100 392 160 392 230 L392 340 L288 340 L288 230 C288 160 302 100 340 60 Z" fill="#b4b2a9"/>
+      <path d="M340 68 C368 104 376 158 378 214 L302 214 C304 158 312 104 340 68 Z" fill="#3c3489"/>
+      <line x1="288" y1="250" x2="392" y2="250" stroke="#5f5e5a" stroke-width="1.5"/>
+      <line x1="288" y1="300" x2="392" y2="300" stroke="#5f5e5a" stroke-width="1.5"/>
+      <line x1="340" y1="60" x2="340" y2="340" stroke="#888780" stroke-width="1" opacity="0.5"/>
+      <rect x="300" y="300" width="80" height="18" rx="2" fill="#5f5e5a"/>
+      <rect x="304" y="304" width="72" height="10" rx="1" fill="#444441"/>
+      <path d="M288 250 L232 320 L288 320 Z" fill="#26215c"/>
+      <path d="M392 250 L448 320 L392 320 Z" fill="#26215c"/>
+      <line x1="288" y1="270" x2="250" y2="310" stroke="#7c6cf0" stroke-width="1" opacity="0.6"/>
+      <line x1="392" y1="270" x2="430" y2="310" stroke="#7c6cf0" stroke-width="1" opacity="0.6"/>
+      <rect x="300" y="330" width="80" height="14" rx="2" fill="#888780"/>
+      <rect x="308" y="333" width="64" height="3" fill="#5f5e5a"/>
+      <rect x="308" y="338" width="64" height="3" fill="#5f5e5a"/>
+    </g>
+  </svg>
+</div>
+
+<!-- barra de progresso / telemetria -->
+<div id="progress" aria-hidden="true">
+  <span id="alt-readout">ALT 000%</span>
+  <div id="progress-track">
+    <div id="progress-fill"></div>
+    <span class="tick" style="bottom:0%">chão</span>
+    <span class="tick" style="bottom:25%">troposfera</span>
+    <span class="tick" style="bottom:50%">estratosfera</span>
+    <span class="tick" style="bottom:75%">termosfera</span>
+    <span class="tick" style="bottom:100%">espaço</span>
+  </div>
+</div>
+
+<!-- fundo escurecido por trás do log de missão quando expandido -->
+<div id="mission-log-backdrop" aria-hidden="true"></div>
+
+<!-- log de missão: marco atual, sincronizado com o scroll. O conteúdo
+     vem da lista #milestones (mais abaixo) — este card é só o "visor" -->
+<div id="mission-log" role="region" aria-label="Log de missão">
+  <button id="mission-log-close" type="button" aria-label="Fechar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l14 14M19 5L5 19"/></svg>
+  </button>
+  <div id="mission-log-photo-wrap">
+    <svg class="mission-log-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+      <rect x="2.5" y="5.5" width="19" height="14" rx="1.5"/>
+      <circle cx="9" cy="11" r="2.4"/>
+      <path d="M2.5 16.5 L8 12 L11.5 15 L15.5 11 L21.5 16"/>
+    </svg>
+    <img id="mission-log-photo" alt="">
+    <div id="mission-log-photo-dots" class="mission-log-photo-dots" aria-hidden="true"></div>
+  </div>
+  <div id="mission-log-collage" aria-hidden="true" hidden>
+    <div class="collage-tile" data-tile="0">
+      <svg class="mission-log-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="2.5" y="5.5" width="19" height="14" rx="1.5"/>
+        <circle cx="9" cy="11" r="2.4"/>
+        <path d="M2.5 16.5 L8 12 L11.5 15 L15.5 11 L21.5 16"/>
+      </svg>
+      <img class="collage-img" alt="">
     </div>
-  </nav>
-
-
-  <main>
-
-    <!-- =====================================================
-         SECTION 1 — HERO
-         Typography-first landing. Blueprint grid overlay
-         gives a subtle engineering character.
-    ===================================================== -->
-    <section class="hero" id="hero" aria-labelledby="hero-heading">
-      <div class="hero-inner">
-
-        <!-- Monospace eyebrow label -->
-        <p class="hero-label">Aerospace Engineer</p>
-
-        <h1 class="hero-name" id="hero-heading">João Gaspar</h1>
-
-        <p class="hero-tagline">Aerospace engineer with an electronics foundation.</p>
-
-        <p class="hero-description">
-          M.Sc. in Aerospace Engineering (Aerodynamics &amp; Propulsion) with a
-          B.Sc. in Electronics Engineering. Bridging computational aerodynamics,
-          flight simulation, and embedded systems to build complete engineering solutions.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =====================================================
-         SECTION 2 — PROFILE PHOTO
-         Centered photo, name, and role.
-         Replace images/profile.jpg with your own photo.
-    ===================================================== -->
-    <section class="about" id="about" aria-labelledby="about-heading">
-      <div class="about-inner reveal">
-
-        <div class="profile-photo-wrap">
-          <!--
-            Replace images/profile.jpg with your actual photo.
-            Recommended size: 400×400 px, square crop.
-          -->
-          <img
-            src="images/portrait/eu.jpeg"
-            alt="Portrait of João Gaspar"
-            class="profile-photo"
-            width="172"
-            height="172"
-            loading="lazy"
-          />
-        </div>
-
-        <h2 class="about-name" id="about-heading">João Gaspar</h2>
-        <p class="about-role">Aerospace Engineer &nbsp;·&nbsp; M.Sc. Aerospace Engineering · B.Sc. Electronics Engineering</p>
-
-        <p class="about-bio">
-          Passionate about the intersection of aerodynamics, flight simulation,
-          and computational engineering. With a background in both theoretical
-          and applied aerospace research, I bring analytical precision and a
-          systems-thinking mindset to every project — from wind-tunnel
-          test campaigns to full six-degree-of-freedom flight simulators.
-        </p>
-
-      </div>
-    </section>
-
-
-    <!-- =====================================================
-         SECTION 3 — PROJECTS
-         Responsive card grid. Each card links to a
-         dedicated project page rendered from Markdown.
-         Add or remove .project-card elements as needed.
-    ===================================================== -->
-    <section class="projects" id="projects" aria-labelledby="projects-heading">
-      <div class="section-inner">
-
-        <header class="section-header reveal">
-          <span class="section-label">Work</span>
-          <h2 class="section-title" id="projects-heading">Projects</h2>
-        </header>
-
-        <div class="projects-grid" id="projects-grid">
-          <!-- Cards populated dynamically by JS from projects/*.md -->
-          <div class="project-card reveal delay-1">
-            <a class="project-card-img-link" href="project.html?p=foil_optimization">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/foil_optimization.png" alt="Airfoil Aerodynamic Optimisation" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=foil_optimization">
-                <h3 class="project-card-title">Airfoil Aerodynamic Optimisation</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">STAR-CCM+</span>
-                <span class="tag">XFOIL</span>
-                <span class="tag">Python</span>
-                <span class="tag">MATLAB</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/HW2_AERO3.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="project-card reveal delay-2">
-            <a class="project-card-img-link" href="project.html?p=karman_rotochute">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/karman_rotochute.png" alt="Spacecraft Recovery via Rotary Wings — Autorotation Study" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=karman_rotochute">
-                <h3 class="project-card-title">Spacecraft Recovery via Rotary Wings — Autorotation Study</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">STAR-CCM+</span>
-                <span class="tag">MATLAB</span>
-                <span class="tag">Python</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/pararotor%20recovery%20system%20design%20-%20joao%20gaspar%20-%2096930%20-%20peaer.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="project-card reveal delay-3">
-            <a class="project-card-img-link" href="project.html?p=coflow">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/coflow.jpg" alt="Co-flow Jet Aerodynamic Analysis" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=coflow">
-                <h3 class="project-card-title">Co-flow Jet Aerodynamic Analysis</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">STAR-CCM+</span>
-                <span class="tag">CFD</span>
-                <span class="tag">Python</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/HW3___Computacional_Fluid_Mechanics.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="project-card reveal delay-4">
-            <a class="project-card-img-link" href="project.html?p=jet_shocks">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/jet_shocks.png" alt="Supersonic Jet Shock Structure Analysis" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=jet_shocks">
-                <h3 class="project-card-title">Supersonic Jet Shock Structure Analysis</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">OpenFOAM</span>
-                <span class="tag">CFD</span>
-                <span class="tag">Python</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/HW4___Computacional_Fluid_Mechanics.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="project-card reveal delay-1">
-            <a class="project-card-img-link" href="project.html?p=reflected_shock">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/reflected_shock.png" alt="Reflected Shock Wave Interaction Study" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=reflected_shock">
-                <h3 class="project-card-title">Reflected Shock Wave Interaction Study</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">OpenFOAM</span>
-                <span class="tag">Python</span>
-                <span class="tag">MATLAB</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/HW1___Computacional_Fluid_Mechanics.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="project-card reveal delay-2">
-            <a class="project-card-img-link" href="project.html?p=shocktube">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/shocktube.png" alt="Shock Tube Numerical Simulation" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=shocktube">
-                <h3 class="project-card-title">Shock Tube Numerical Simulation</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">MATLAB</span>
-                <span class="tag">Python</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/HW1_AERO3.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 7 -->
-          <div class="project-card reveal delay-3">
-            <a class="project-card-img-link" href="project.html?p=openaerostruct">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/openaerostruct.png" alt="Aircraft Aerostructural Optimisation with OpenAeroStruct" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=openaerostruct">
-                <h3 class="project-card-title">Aircraft Aerostructural Optimisation with OpenAeroStruct</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">Python</span>
-                <span class="tag">OpenAeroStruct</span>
-                <span class="tag">OpenMDAO</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/OpenAeroStruct.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 8 -->
-          <div class="project-card reveal delay-4">
-            <a class="project-card-img-link" href="project.html?p=dim_bombardier">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/dim_bombardier.jpeg" alt="Bombardier Aircraft Aerodynamic Dimensional Study" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=dim_bombardier">
-                <h3 class="project-card-title">Bombardier Aircraft Aerodynamic Dimensional Study</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">STAR-CCM+</span>
-                <span class="tag">SolidWorks</span>
-                <span class="tag">MATLAB</span>
-                <span class="tag">Python</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/Aircraft_Optmization.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 9 -->
-          <div class="project-card reveal delay-1">
-            <a class="project-card-img-link" href="project.html?p=LCA-combustiveis">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/LCA%20combustiveis.jpg" alt="Life Cycle Assessment of Aviation Fuels" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=LCA-combustiveis">
-                <h3 class="project-card-title">Life Cycle Assessment of Aviation Fuels</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">LCA</span>
-                <span class="tag">Python</span>
-                <span class="tag">MATLAB</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/sustainable_project.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 10 -->
-          <div class="project-card reveal delay-2">
-            <a class="project-card-img-link" href="project.html?p=tag">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/tag.png" alt="Telemetry Acquisition &amp; Graphing System" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=tag">
-                <h3 class="project-card-title">Telemetry Acquisition &amp; Graphing System</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">C</span>
-                <span class="tag">PCB Design</span>
-                <span class="tag">LabVIEW</span>
-                <span class="tag">MATLAB</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/AmbEsp.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 11 -->
-          <div class="project-card reveal delay-3">
-            <a class="project-card-img-link" href="project.html?p=filter-system">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/filter%20system.png" alt="Analog Signal Conditioning Filter System" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=filter-system">
-                <h3 class="project-card-title">Analog Signal Conditioning Filter System</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">PCB Design</span>
-                <span class="tag">KiCad</span>
-                <span class="tag">SPICE</span>
-                <span class="tag">LabVIEW</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/Trash_Can_with_Odor_Neutralization.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 12 -->
-          <div class="project-card reveal delay-4">
-            <a class="project-card-img-link" href="project.html?p=interface">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/interface.png" alt="Flight Test Data Acquisition Interface" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=interface">
-                <h3 class="project-card-title">Flight Test Data Acquisition Interface</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">LabVIEW</span>
-                <span class="tag">Python</span>
-                <span class="tag">MATLAB</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/HW3_AERO3.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 13 -->
-          <div class="project-card reveal delay-1">
-            <a class="project-card-img-link" href="project.html?p=error_project">
-              <div class="project-card-img-wrap">
-                <img src="images/projects/error_project.png" alt="Experimental Uncertainty &amp; Error Analysis" class="project-card-img" loading="lazy" />
-              </div>
-            </a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="project.html?p=error_project">
-                <h3 class="project-card-title">Experimental Uncertainty &amp; Error Analysis</h3>
-              </a>
-              <div class="project-card-tags">
-                <span class="tag">OpenFOAM</span>
-                <span class="tag">CFD</span>
-                <span class="tag">Python</span>
-                <span class="tag">MATLAB</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="reports/HW2___Computacional_Fluid_Mechanics.pdf" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  View PDF
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- =====================================================
-         SECTION 4 — ENGINEERING TOOLBOX
-         Skills displayed as grouped monospace tag chips.
-         Add/remove tools and categories freely.
-    ===================================================== -->
-    <section class="toolbox" id="toolbox" aria-labelledby="toolbox-heading">
-      <div class="section-inner">
-
-        <header class="section-header reveal">
-          <span class="section-label">Skills</span>
-          <h2 class="section-title" id="toolbox-heading">Engineering Toolbox</h2>
-        </header>
-
-        <div class="toolbox-grid">
-
-          <div class="reveal delay-1">
-            <h3 class="toolbox-category-title">Programming Languages</h3>
-            <div class="toolbox-tags">
-              <span class="tag">MATLAB</span>
-              <span class="tag">Python</span>
-              <span class="tag">C/C++</span>
-            </div>
-          </div>
-
-          <div class="reveal delay-2">
-            <h3 class="toolbox-category-title">Simulation &amp; Modelling</h3>
-            <div class="toolbox-tags">
-              <span class="tag">Simulink</span>
-              <span class="tag">STAR-CCM+</span>
-              <span class="tag">LabVIEW</span>
-            </div>
-          </div>
-
-          <div class="reveal delay-3">
-            <h3 class="toolbox-category-title">CFD &amp; Aerodynamics</h3>
-            <div class="toolbox-tags">
-              <span class="tag">STAR-CCM+</span>
-              <span class="tag">XFLR5</span>
-              <span class="tag">XFOIL</span>
-            </div>
-          </div>
-
-          <div class="reveal delay-1">
-            <h3 class="toolbox-category-title">Design &amp; CAD</h3>
-            <div class="toolbox-tags">
-              <span class="tag">SolidWorks</span>
-            </div>
-          </div>
-
-          <div class="reveal delay-2">
-            <h3 class="toolbox-category-title">Electronics &amp; Embedded</h3>
-            <div class="toolbox-tags">
-              <span class="tag">PCB Design</span>
-              <span class="tag">Embedded Systems</span>
-              <span class="tag">Instrumentation</span>
-              <span class="tag">Signal Acquisition</span>
-            </div>
-          </div>
-
-          <div class="reveal delay-3">
-            <h3 class="toolbox-category-title">Languages</h3>
-            <div class="toolbox-tags">
-              <span class="tag">Portuguese — Native</span>
-              <span class="tag">English — C1 (CAE)</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- =====================================================
-         SECTION 5 — CV
-         Three-column layout: Education | Experience |
-         Volunteering + Certifications.
-         Update dates, titles, and descriptions below.
-         The "Download CV" button links to CV.pdf.
-    ===================================================== -->
-    <section class="cv" id="cv" aria-labelledby="cv-heading">
-      <div class="section-inner">
-
-        <header class="section-header reveal">
-          <div>
-            <span class="section-label">Background</span>
-            <h2 class="section-title" id="cv-heading">Curriculum Vitae</h2>
-          </div>
-          <!--
-            Place your CV PDF at CV.pdf (repo root).
-            The `download` attribute triggers a save dialog.
-          -->
-          <a href="./CV.pdf" class="btn btn-primary" download aria-label="Download CV as PDF">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2.2"
-                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Download CV
-          </a>
-        </header>
-
-        <div class="cv-grid">
-
-          <!-- Column 1: Education -->
-          <div>
-            <h3 class="cv-column-title">Education</h3>
-
-            <article class="cv-card reveal">
-              <time class="cv-card-date" datetime="2022/2025">Sep 2022 — Jun 2025</time>
-              <h4 class="cv-card-title">M.Sc. Aerospace Engineering</h4>
-              <p class="cv-card-org">Instituto Superior Técnico, Lisbon</p>
-              <p class="cv-card-desc">Aerodynamics and Propulsion specialisation. Key subjects: Incompressible &amp; Compressible Aerodynamics, Helicopters, CFD, Aircraft Optimisation, Electric Propulsion, Project Management. Thesis: <em>Computational Investigation of Spacecraft Recovery via Rotary Wings: A Study on Autorotation.</em></p>
-            </article>
-
-            <article class="cv-card reveal delay-1">
-              <time class="cv-card-date" datetime="2019/2022">Sep 2019 — Jun 2022</time>
-              <h4 class="cv-card-title">B.Sc. Electronics Engineering</h4>
-              <p class="cv-card-org">Instituto Superior Técnico, Lisbon</p>
-              <p class="cv-card-desc">Key subjects: Digital Systems, Communications Systems, Embedded Systems, Instrumentation &amp; Signal Acquisition, Micro and Nanoelectronics, Computer Networks, Automatic Control, Electronic Devices.</p>
-            </article>
-          </div>
-
-          <!-- Column 2: Experience -->
-          <div>
-            <h3 class="cv-column-title">Experience</h3>
-
-            <article class="cv-card reveal">
-              <time class="cv-card-date" datetime="2021/2025">Nov 2021 — Jan 2025</time>
-              <h4 class="cv-card-title">Scholarship</h4>
-              <p class="cv-card-org">ROB9-16 &amp; Project "Oeiras Educa" · IST</p>
-              <p class="cv-card-desc">Led STEM workshops for thousands of children under the ROB9-16 programme. Collaborated with Câmara Municipal de Oeiras to develop educational programmes, lectures, and student projects.</p>
-            </article>
-
-            <article class="cv-card reveal delay-1">
-              <time class="cv-card-date" datetime="2022/2024">Jul 2022 — Apr 2024</time>
-              <h4 class="cv-card-title">Electrical Engineer</h4>
-              <p class="cv-card-org">Técnico Fuel Cell</p>
-              <p class="cv-card-desc">Development of a telemetry system for a hydrogen-powered car for the Shell Eco-Marathon competition. Skills: electronics, PCB design, circuits and systems design, laboratory work.</p>
-            </article>
-          </div>
-
-          <!-- Column 3: Volunteering + Certifications -->
-          <div>
-            <h3 class="cv-column-title">Volunteering</h3>
-
-            <article class="cv-card reveal">
-              <time class="cv-card-date" datetime="2020/2022">Sep 2020 — Jul 2022</time>
-              <h4 class="cv-card-title">Mentor</h4>
-              <p class="cv-card-org">NAPE · IST</p>
-              <p class="cv-card-desc">Welcomed and integrated new students into the school community.</p>
-            </article>
-
-            <article class="cv-card reveal delay-1">
-              <time class="cv-card-date" datetime="2021/2022">Sep 2021 — Jan 2022</time>
-              <h4 class="cv-card-title">Tutor — "Salas de Estudo Online"</h4>
-              <p class="cv-card-org">Núcleo de Desenvolvimento Académico · IST</p>
-              <p class="cv-card-desc">Provided personalised classes for first-year students, supporting project work and exam preparation.</p>
-            </article>
-
-            <div class="cv-section-spacer">
-              <h3 class="cv-column-title">Certifications</h3>
-            </div>
-
-            <article class="cv-card reveal delay-2">
-              <time class="cv-card-date" datetime="2019">2019</time>
-              <h4 class="cv-card-title">Advanced Certificate in English (CAE)</h4>
-              <p class="cv-card-org">Cambridge Assessment English</p>
-            </article>
-
-            <article class="cv-card reveal delay-3">
-              <time class="cv-card-date" datetime="2018">2018</time>
-              <h4 class="cv-card-title">First Certificate in English (FCE)</h4>
-              <p class="cv-card-org">Cambridge Assessment English</p>
-            </article>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       SECTION 6 — CONTACT / FOOTER
-       Update email address, LinkedIn URL, and GitHub URL.
-  ===================================================== -->
-  <footer class="footer" id="contact" role="contentinfo">
-    <div class="footer-inner">
-
-      <h2 class="footer-title reveal">Get in Touch</h2>
-      <p class="footer-sub reveal">
-        Open to research collaborations, engineering projects, and new opportunities.
+    <div class="collage-tile" data-tile="1">
+      <svg class="mission-log-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="2.5" y="5.5" width="19" height="14" rx="1.5"/>
+        <circle cx="9" cy="11" r="2.4"/>
+        <path d="M2.5 16.5 L8 12 L11.5 15 L15.5 11 L21.5 16"/>
+      </svg>
+      <img class="collage-img" alt="">
+    </div>
+    <div class="collage-tile" data-tile="2">
+      <svg class="mission-log-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="2.5" y="5.5" width="19" height="14" rx="1.5"/>
+        <circle cx="9" cy="11" r="2.4"/>
+        <path d="M2.5 16.5 L8 12 L11.5 15 L15.5 11 L21.5 16"/>
+      </svg>
+      <img class="collage-img" alt="">
+    </div>
+    <div class="collage-tile" data-tile="3">
+      <svg class="mission-log-photo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="2.5" y="5.5" width="19" height="14" rx="1.5"/>
+        <circle cx="9" cy="11" r="2.4"/>
+        <path d="M2.5 16.5 L8 12 L11.5 15 L15.5 11 L21.5 16"/>
+      </svg>
+      <img class="collage-img" alt="">
+    </div>
+  </div>
+  <div id="mission-log-text">
+    <span id="mission-log-year"></span>
+    <p id="mission-log-tagline"></p>
+    <p id="mission-log-detail"></p>
+    <a id="mission-log-link" href="#" hidden></a>
+    <button id="mission-log-expand" type="button" aria-expanded="false">+ mais informação</button>
+    <div id="mission-log-more" hidden>
+      <p id="mission-log-more-text"></p>
+      <ul id="mission-log-more-list"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- rodapé fixo -->
+<footer id="site-footer">
+  <span class="brand">João Gaspar &copy; 2026</span>
+  <div class="socials">
+    <a href="https://github.com/joaogaspar00" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.5 0 12.3c0 5.44 3.44 10.05 8.21 11.68.6.11.82-.27.82-.6 0-.3-.01-1.08-.02-2.12-3.34.75-4.04-1.65-4.04-1.65-.55-1.43-1.34-1.82-1.34-1.82-1.09-.77.08-.75.08-.75 1.2.09 1.84 1.27 1.84 1.27 1.07 1.87 2.81 1.33 3.5 1.02.11-.79.42-1.33.76-1.64-2.66-.31-5.47-1.36-5.47-6.03 0-1.33.46-2.42 1.22-3.28-.12-.31-.53-1.56.12-3.26 0 0 1-.33 3.3 1.25a11.2 11.2 0 0 1 6 0c2.29-1.58 3.3-1.25 3.3-1.25.65 1.7.24 2.95.12 3.26.76.86 1.22 1.95 1.22 3.28 0 4.68-2.81 5.71-5.49 6.02.43.38.81 1.13.81 2.28 0 1.65-.02 2.98-.02 3.38 0 .33.22.72.83.6C20.57 22.34 24 17.74 24 12.3 24 5.5 18.63 0 12 0Z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/joaogaspar00/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+    </a>
+    <a href="contact.html" aria-label="Contactar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+    </a>
+  </div>
+</footer>
+
+<!-- painel de boas-vindas / hero: fica sobre a cena da base de lançamento,
+     já visível desde o início (sem página de intro a tapar a plataforma) -->
+<div id="hero-panel">
+  <span class="hero-eyebrow">JOÃO GASPAR · MISSION CONTROL</span>
+  <h1 class="hero-name">João Gaspar</h1>
+  <p class="hero-role">Aerospace Engineer — Aerodinâmica e Propulsão</p>
+  <p class="hero-tagline">Uma subida da superfície até ao espaço: o percurso académico e profissional.</p>
+  <button id="launch-btn" type="button">
+    <span>Iniciar lançamento</span>
+  </button>
+  <!-- atalho para quem já viu o site ou está com pressa (recrutadores):
+       salta a subida toda e vai direto à secção final -->
+  <button id="profile-shortcut" type="button">Ir direto ao perfil →</button>
+</div>
+
+<!-- percurso completo: fonte única dos marcos do log de missão. O
+     script.js lê esta lista para alimentar o card; aqui fica escondida
+     visualmente (.sr-only) mas legível por leitores de ecrã e motores
+     de busca. Os marcos são distribuídos automaticamente, por ordem, ao
+     longo da subida — para acrescentar um, basta acrescentar um <li>.
+       data-photo   — imagem fixa
+       data-photos  — várias imagens em rotação (separadas por vírgula)
+       data-collage — até 4 imagens em colagem (separadas por vírgula) -->
+<section id="percurso" class="sr-only" aria-labelledby="percurso-title">
+  <h2 id="percurso-title">Percurso</h2>
+  <ol id="milestones">
+    <li data-photo="eu.jpeg">
+      <h3><span class="m-year">Perfil</span> <span class="m-tagline">Engenharia aeroespacial com raízes em eletrónica</span></h3>
+      <p class="m-detail">Mestre em Eng. Aeroespacial (Aerodinâmica e Propulsão), licenciado em Eng. Eletrónica, IST.</p>
+      <p class="m-more">Comecei pelos circuitos e acabei nos escoamentos. Interessa-me sobretudo CFD, aerodinâmica e propulsão — e em particular tecnologia espacial reutilizável e uma engenharia aeroespacial mais sustentável.</p>
+      <ul class="m-tags"><li>CFD</li><li>Aerodinâmica</li><li>Propulsão</li><li>Tecnologia reutilizável</li><li>Sustentabilidade</li></ul>
+    </li>
+    <li data-photo="fotos/licenciatura.jpg">
+      <h3><span class="m-year">2019</span> <span class="m-tagline">Onde tudo começou a fazer sentido</span></h3>
+      <p class="m-detail">Bits, circuitos e noites mal dormidas. Licenciatura em Eng. Eletrónica, IST.</p>
+      <p class="m-more">IST, Set 2019 – Jun 2022. Três anos de base em eletrónica que viriam a ser a fundação para tudo o que veio a seguir — do CFD à instrumentação de voo.</p>
+      <ul class="m-tags"><li>Sistemas Digitais</li><li>Comunicações</li><li>Sistemas Embebidos</li><li>Instrumentação e Aquisição de Sinal</li><li>Micro/Nanoeletrónica</li><li>Redes de Computadores</li><li>Controlo Automático</li><li>Dispositivos Eletrónicos</li><li>Gestão</li></ul>
+    </li>
+    <li data-photo="fotos/nape.jpg">
+      <h3><span class="m-year">2020</span> <span class="m-tagline">De caloiro perdido a guia</span></h3>
+      <p class="m-detail">Acolhimento de novos alunos. Mentor, NAPE-IST.</p>
+      <p class="m-more">Núcleo de Apoio ao Estudante, IST — Set 2020 a Jul 2022. Acompanhamento de novos alunos na adaptação ao primeiro ano, de quem também tinha passado por lá pouco tempo antes.</p>
+    </li>
+    <li data-collage="fotos/rob916-1.jpg,fotos/rob916-2.jpg,fotos/rob916-3.jpg,fotos/rob916-4.jpg">
+      <h3><span class="m-year">2021</span> <span class="m-tagline">Ensinar robótica como se fosse magia</span></h3>
+      <p class="m-detail">Workshops STEM para milhares de crianças. Scholarship ROB9-16 &amp; Oeiras Educa.</p>
+      <p class="m-more">Nov 2021 – Jan 2025, em parceria com a Câmara Municipal de Oeiras. Workshops de robótica e STEM para milhares de crianças — o primeiro contacto de muitas com engenharia — e desenvolvimento de programas educativos, palestras e projetos com alunos.</p>
+    </li>
+    <li data-photo="fotos/salas-estudo.jpg">
+      <h3><span class="m-year">2021</span> <span class="m-tagline">Física às 23h, via Zoom</span></h3>
+      <p class="m-detail">Apoio a alunos do 1º ano em pânico pré-exame. Salas de Estudo Online, IST.</p>
+      <p class="m-more">Núcleo de Desenvolvimento Académico, IST — Set 2021 a Jan 2022. Apoio direto a alunos do 1º ano em projetos e preparação para exames, sessões remotas fora de horas incluídas.</p>
+    </li>
+    <li data-photo="fotos/mestrado.jpg">
+      <h3><span class="m-year">2022</span> <span class="m-tagline">A escolha que definiu o resto do percurso</span></h3>
+      <p class="m-detail">Aerodinâmica e Propulsão. Mestrado em Eng. Aeroespacial, IST.</p>
+      <p class="m-more">IST, Set 2022 – Jun 2025. Especialização em Aerodinâmica e Propulsão — a transição de eletrónica para o espaço, com tese em recuperação de veículos espaciais por rotores.</p>
+      <ul class="m-tags"><li>Aerodinâmica Incompressível</li><li>Aerodinâmica Compressível</li><li>Helicópteros</li><li>CFD</li><li>Otimização de Aeronaves</li><li>Propulsão Elétrica</li><li>Gestão de Projetos</li></ul>
+    </li>
+    <li data-photo="fotos/fuel-cell.jpg">
+      <h3><span class="m-year">2022</span> <span class="m-tagline">Hidrogénio contra o relógio</span></h3>
+      <p class="m-detail">Telemetria para o carro da Shell Eco-Marathon. Técnico Fuel Cell.</p>
+      <p class="m-more">Electrical Engineer, Jul 2022 – Abr 2024. Desenvolvimento do sistema de telemetria do carro a hidrogénio, além de eletrónica e montagem do veículo para a competição Shell Eco-Marathon.</p>
+      <ul class="m-tags"><li>Telemetria</li><li>Eletrónica</li><li>PCB Design</li><li>Projeto de circuitos e sistemas</li><li>Trabalho laboratorial</li></ul>
+    </li>
+    <li data-photo="fotos/krav-maga.jpg">
+      <h3><span class="m-year">2022</span> <span class="m-tagline">Ensinar a proteger-se</span></h3>
+      <p class="m-detail">Uma aula de cada vez. Self-Defense Instructor, Krav Maga Global.</p>
+      <p class="m-more">Set 2022 – presente. Planeamento e liderança de aulas de defesa pessoal, com adaptação a diferentes níveis de experiência dos alunos.</p>
+    </li>
+    <li data-photo="fotos/certificacao-kmg.jpg">
+      <h3><span class="m-year">2023</span> <span class="m-tagline">190 horas depois</span></h3>
+      <p class="m-detail">Um certificado e provavelmente uns hematomas. KMG Civil Instructor.</p>
+      <p class="m-more">KMG Civil Instructor Course, Krav Maga Global — 190 horas de formação, 2023.</p>
+    </li>
+    <li data-photo="fotos/tese.jpg">
+      <h3><span class="m-year">Jul 2025</span> <span class="m-tagline">Três anos resumidos num PDF</span></h3>
+      <p class="m-detail">Entrega da tese — e um alívio dos grandes.</p>
+      <p class="m-more">"Computational Investigation of Spacecraft Recovery via Rotary Wings: A Study on Autorotation" — tese de Mestrado em Engenharia Aeroespacial, IST. Simulações computacionais sobre recuperação de veículos espaciais por autorotação.</p>
+      <!-- quando houver tese.pdf: <a class="m-link" href="tese.pdf">Ler a tese em PDF</a> -->
+    </li>
+    <li data-photo="fotos/formatura.jpg">
+      <h3><span class="m-year">2025</span> <span class="m-tagline">Mestre em Eng. Aeroespacial</span></h3>
+      <p class="m-detail">Próxima paragem: por decidir.</p>
+      <p class="m-more">Fim de um percurso de seis anos entre eletrónica e aeroespacial. A seguir: aerodinâmica, propulsão, CFD e tecnologia reutilizável.</p>
+    </li>
+    <li data-photo="logo-jg.svg">
+      <h3><span class="m-year">SYS CHECK</span> <span class="m-tagline">Todos os sistemas nominais</span></h3>
+      <p class="m-detail">Ferramentas, línguas e certificações.</p>
+      <p class="m-more">Português nativo; inglês C1 — Advanced Certificate in English (CAE, 2019) e First Certificate in English (FCE, 2018), Cambridge. KMG Civil Instructor (190h, 2023).</p>
+      <ul class="m-tags"><li>MATLAB</li><li>Python</li><li>C/C++</li><li>Simulink</li><li>STAR-CCM+</li><li>XFOIL</li><li>XFLR5</li><li>LabVIEW</li><li>SolidWorks</li><li>PCB Design</li><li>Sistemas Embebidos</li><li>Instrumentação</li></ul>
+    </li>
+  </ol>
+</section>
+
+<!-- secção final: estado atual / contacto (topo do documento = espaço) -->
+<section id="final-section">
+  <header class="final-header">
+    <img src="logo-jg.svg" alt="João Gaspar" class="final-logo">
+  </header>
+
+  <div class="final-content">
+    <div class="final-photo">
+      <img src="eu.jpeg" alt="João Gaspar">
+    </div>
+
+    <div class="final-text-block">
+      <span class="final-tag"><span class="final-tag-dot"></span>OPEN TO NEW OPPORTUNITIES</span>
+
+      <h2 class="final-title">Próxima missão</h2>
+      <p class="final-text">
+        Em busca de oportunidades na área aeroespacial — aerodinâmica,
+        CFD, propulsão e tecnologia reutilizável.
       </p>
 
-      <nav class="footer-links reveal" aria-label="Contact links">
-
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/joaogaspar00/" class="footer-link"
-           target="_blank" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-          LinkedIn
-        </a>
-
-        <!-- GitHub -->
-        <a href="https://github.com/joaogaspar00" class="footer-link"
-           target="_blank" rel="noopener noreferrer">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-               stroke-linejoin="round" aria-hidden="true">
-            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-            <path d="M9 18c-4.51 2-5-2-7-2"/>
-          </svg>
-          GitHub
-        </a>
-
-      </nav>
-
-      <div class="footer-divider"></div>
-      <p class="footer-copy">&copy; 2026 João Gaspar</p>
-
+      <div class="final-actions">
+        <a href="contact.html" id="contact-btn" class="final-btn final-btn-primary">Contactar</a>
+        <a href="projetos.html" class="final-btn final-btn-secondary">Projetos</a>
+        <a href="CV.pdf" class="final-btn final-btn-secondary" data-cv-link download>Download CV</a>
+      </div>
     </div>
-  </footer>
+  </div>
+</section>
 
+<!-- contagem decrescente -->
+<div id="countdown-overlay" aria-hidden="true">
+  <div class="countdown-ring">
+    <span id="countdown-number">3</span>
+  </div>
+</div>
 
-  <!-- =====================================================
-       JAVASCRIPT
-       1. Mobile navigation toggle
-       2. Scroll-reveal animation (IntersectionObserver)
-       3. Active nav link highlighting on scroll
-  ===================================================== -->
-  <!-- Project Cards — loaded dynamically from projects/*.md frontmatter -->
-  <script>
-    (function () {
-      const SLUGS = [
-        'foil_optimization', 'karman_rotochute', 'coflow', 'jet_shocks',
-        'reflected_shock', 'shocktube', 'openaerostruct', 'dim_bombardier',
-        'LCA-combustiveis', 'tag', 'filter-system', 'interface', 'error_project'
-      ];
-      const DELAYS = ['delay-1', 'delay-2', 'delay-3', 'delay-4'];
-      const PDF_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+<button id="skip-btn" type="button" hidden>Saltar animação →</button>
 
-      function esc(s) {
-        return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      }
+<!-- reaparece perto do chão depois do primeiro lançamento, em vez do
+     painel de boas-vindas completo -->
+<button id="replay-btn" type="button" hidden>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 11A8 8 0 1 0 18.5 16"/><path d="M20 4v7h-7"/></svg>
+  <span>Refazer lançamento</span>
+</button>
 
-      function parseFrontmatter(raw) {
-        const lines = raw.replace(/\r\n/g,'\n').trimStart().split('\n');
-        if (lines[0].trim() !== '---') return {};
-        let end = -1;
-        for (let i = 1; i < lines.length; i++) { if (lines[i].trim() === '---') { end = i; break; } }
-        if (end === -1) return {};
-        const data = {};
-        for (let i = 1; i < end; i++) {
-          const c = lines[i].indexOf(':');
-          if (c > 0) {
-            const k = lines[i].slice(0, c).trim();
-            const v = lines[i].slice(c + 1).trim().replace(/^['"]|['"]$/g, '');
-            if (k) data[k] = v;
-          }
-        }
-        return data;
-      }
-
-      function buildCard(data, slug, i) {
-        const title    = data.title || slug.replace(/[-_]/g, ' ');
-        const delay    = DELAYS[i % 4];
-        const imgHtml  = data.image ? `<img src="${esc(data.image)}" alt="${esc(title)}" class="project-card-img" loading="lazy" />` : '';
-        const tagsHtml = data.tags  ? data.tags.split(',').map(t => `<span class="tag">${esc(t.trim())}</span>`).join('') : '';
-        const pdfHtml  = data.report
-          ? `<div class="project-card-actions"><a href="${esc(data.report.replace(/ /g,'%20'))}" class="btn btn-outline project-card-pdf" target="_blank" rel="noopener">${PDF_ICON} View PDF</a></div>`
-          : '';
-        const projectUrl = `project.html?p=${encodeURIComponent(slug)}`;
-        return `<div class="project-card reveal ${delay}">
-            <a class="project-card-img-link" href="${projectUrl}"><div class="project-card-img-wrap">${imgHtml}</div></a>
-            <div class="project-card-body">
-              <a class="project-card-title-link" href="${projectUrl}"><h3 class="project-card-title">${esc(title)}</h3></a>
-              ${tagsHtml ? `<div class="project-card-tags">${tagsHtml}</div>` : ''}
-              ${pdfHtml}
-            </div>
-          </div>`;
-      }
-
-      const grid = document.getElementById('projects-grid');
-      if (!grid) return;
-      const originalCards = Array.from(grid.children).map(el => el.outerHTML);
-
-      Promise.all(SLUGS.map((slug, i) =>
-        fetch('projects/' + slug + '.md')
-          .then(r => r.ok ? r.text() : null)
-          .then(raw => raw ? buildCard(parseFrontmatter(raw), slug, i) : originalCards[i])
-          .catch(() => originalCards[i])
-      )).then(cards => {
-        grid.innerHTML = cards.join('');
-        const obs = new IntersectionObserver(entries => {
-          entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-        grid.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-      });
-    })();
-  </script>
-
-  <script>
-    /* -------------------------------------------------
-       Mobile Navigation Toggle
-    ------------------------------------------------- */
-    const navToggle = document.getElementById('nav-toggle');
-    const navLinks  = document.getElementById('nav-links');
-
-    navToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      navToggle.classList.toggle('active', isOpen);
-      navToggle.setAttribute('aria-expanded', isOpen);
-    });
-
-    // Close nav when any link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Close nav when clicking outside of it
-    document.addEventListener('click', e => {
-      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-
-    /* -------------------------------------------------
-       Scroll-Reveal Animation
-       Uses IntersectionObserver for performance.
-       Elements with class "reveal" fade up when visible.
-    ------------------------------------------------- */
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);  // animate once only
-          }
-        });
-      },
-      {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
-      }
-    );
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-
-    /* -------------------------------------------------
-       Active Nav Link Highlighting
-       Highlights the nav link for the section
-       currently in the viewport.
-    ------------------------------------------------- */
-    const sections = document.querySelectorAll('main > section[id], footer[id]');
-    const navAnchors = document.querySelectorAll('.nav-links a');
-
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            navAnchors.forEach(a => {
-              a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
-            });
-          }
-        });
-      },
-      {
-        rootMargin: '-40% 0px -55% 0px'
-      }
-    );
-
-    sections.forEach(s => sectionObserver.observe(s));
-  </script>
-
+<script src="common.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,26 @@
+<svg width="100%" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" style="">
+<title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Montanhas silhuetadas contra céu azul</title>
+<desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Cordilheira em duas camadas sobre um céu azul em gradiente, com deriva horizontal lenta</desc>
+<defs>
+<linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#3f5f82"/>
+<stop offset="55%" stop-color="#5c7ea3"/>
+<stop offset="100%" stop-color="#7b9bbd"/>
+</linearGradient>
+<clipPath id="skyClip2"><rect x="0" y="0" width="680" height="300"/></clipPath>
+</defs>
+
+<rect x="0" y="0" width="680" height="300" fill="url(#sky2)" style="stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+<g clip-path="url(#skyClip2)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+<path d="M-100 300 C -20 200 60 150 160 190 C 260 230 320 130 420 170 C 520 210 580 150 680 190 C 760 220 820 200 880 300 Z" fill="#425a78" opacity="0.65" style="fill:rgb(66, 90, 120);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.65;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+
+</path>
+
+<path d="M-100 300 C -20 230 80 190 180 230 C 280 270 340 200 440 240 C 540 280 600 220 680 250 C 760 275 820 260 880 300 Z" fill="#324863" opacity="0.85" style="fill:rgb(50, 72, 99);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.85;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+
+</path>
+</g>
+
+<rect x="0" y="290" width="680" height="10" fill="#1e2c3d" style="fill:rgb(30, 44, 61);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+</svg>

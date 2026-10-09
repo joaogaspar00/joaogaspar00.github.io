@@ -1,0 +1,64 @@
+<svg width="680" height="680" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Logótipo JG</title>
+<desc>Emblema quadrado sobre fundo escuro com grelha de blueprint, cantos superior-esquerdo e inferior-direito chanfrados com traço roxo e anel oco, e o monograma JG em blocos geométricos, J a branco e G em roxo de acento.</desc>
+
+<rect x="0" y="0" width="680" height="680" fill="#0b0d12"/>
+
+<defs>
+  <pattern id="gridi" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M20 0 L0 0 L0 20" fill="none" stroke="#141824" stroke-width="1"/>
+  </pattern>
+</defs>
+
+<path d="M172 60 L620 60 L620 508 L508 620 L60 620 L60 172 Z" fill="url(#gridi)" stroke="#232733" stroke-width="2"/>
+
+<g stroke="#7c6cf0" stroke-width="11" fill="none" stroke-linecap="round">
+  <line x1="172" y1="60" x2="242" y2="60"/>
+  <line x1="60" y1="172" x2="60" y2="242"/>
+  <line x1="60" y1="172" x2="92.24" y2="139.76"/>
+  <line x1="139.76" y1="92.24" x2="172" y2="60"/>
+
+  <line x1="620" y1="508" x2="620" y2="438"/>
+  <line x1="508" y1="620" x2="438" y2="620"/>
+  <line x1="620" y1="508" x2="587.76" y2="540.24"/>
+  <line x1="540.24" y1="587.76" x2="508" y2="620"/>
+</g>
+
+<circle cx="116" cy="116" r="22.4" fill="none" stroke="#7c6cf0" stroke-width="4"/>
+<circle cx="564" cy="564" r="22.4" fill="none" stroke="#7c6cf0" stroke-width="4"/>
+
+<g fill="#e8e6f0">
+  <rect x="183.2" y="183.2" width="39.2" height="39.2"/>
+  <rect x="228" y="183.2" width="39.2" height="39.2"/>
+  <rect x="272.8" y="183.2" width="39.2" height="39.2"/>
+  <rect x="228" y="228" width="39.2" height="39.2"/>
+  <rect x="228" y="272.8" width="39.2" height="39.2"/>
+  <rect x="228" y="317.6" width="39.2" height="39.2"/>
+  <rect x="93.6" y="362.4" width="39.2" height="39.2"/>
+  <rect x="228" y="362.4" width="39.2" height="39.2"/>
+  <rect x="93.6" y="407.2" width="39.2" height="39.2"/>
+  <rect x="228" y="407.2" width="39.2" height="39.2"/>
+  <rect x="138.4" y="452" width="39.2" height="39.2"/>
+  <rect x="183.2" y="452" width="39.2" height="39.2"/>
+</g>
+
+<g fill="#7c6cf0">
+  <rect x="407.2" y="183.2" width="39.2" height="39.2"/>
+  <rect x="452" y="183.2" width="39.2" height="39.2"/>
+  <rect x="496.8" y="183.2" width="39.2" height="39.2"/>
+  <rect x="541.6" y="183.2" width="39.2" height="39.2"/>
+  <rect x="362.4" y="228" width="39.2" height="39.2"/>
+  <rect x="362.4" y="272.8" width="39.2" height="39.2"/>
+  <rect x="362.4" y="317.6" width="39.2" height="39.2"/>
+  <rect x="452" y="317.6" width="39.2" height="39.2"/>
+  <rect x="496.8" y="317.6" width="39.2" height="39.2"/>
+  <rect x="541.6" y="317.6" width="39.2" height="39.2"/>
+  <rect x="362.4" y="362.4" width="39.2" height="39.2"/>
+  <rect x="541.6" y="362.4" width="39.2" height="39.2"/>
+  <rect x="362.4" y="407.2" width="39.2" height="39.2"/>
+  <rect x="541.6" y="407.2" width="39.2" height="39.2"/>
+  <rect x="407.2" y="452" width="39.2" height="39.2"/>
+  <rect x="452" y="452" width="39.2" height="39.2"/>
+  <rect x="496.8" y="452" width="39.2" height="39.2"/>
+</g>
+</svg>
